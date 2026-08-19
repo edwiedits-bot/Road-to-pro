@@ -1,0 +1,2384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houston & The Woodlands Youth Soccer Pathways</title>
+    <style>
+        :root {
+            --primary-color: #0b2545;
+            --secondary-color: #134074;
+            --accent-color: #8da9c4;
+            --light-bg: #eeeff0;
+            --white: #ffffff;
+            --text-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .academy-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .academy-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .academy-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .academy-card .focus {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .academy-card p {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .academy-card code {
+            background: #f0f0f0;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input {
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .contact-form button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .contact-form button:hover {
+            background: var(--secondary-color);
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            background: var(--white);
+            border-radius: 6px;
+            padding: 0.9rem 1.2rem;
+            margin-bottom: 0.6rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .contact-list .info strong {
+            color: var(--secondary-color);
+        }
+
+        .contact-list .info span {
+            display: block;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .contact-list .actions a {
+            margin-right: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #a33;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-decoration: underline;
+        }
+
+        .empty-note {
+            color: #777;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: -0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .template-box {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .template-box textarea {
+            width: 100%;
+            min-height: 260px;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            resize: vertical;
+        }
+
+        .template-fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .template-fields label {
+            font-size: 0.8rem;
+            color: #555;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .template-fields input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            margin-top: 0.8rem;
+        }
+
+        @media (max-width: 700px) {
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .schedule-wrap {
+            overflow-x: auto;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+        }
+
+        table.schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 640px;
+        }
+
+        table.schedule-table th {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: left;
+            padding: 0.7rem 0.9rem;
+            white-space: nowrap;
+        }
+
+        table.schedule-table td {
+            padding: 0.7rem 0.9rem;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        table.schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table.schedule-table tr:hover td {
+            background: #f7f9fb;
+        }
+
+        .schedule-form {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr auto;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 900px) {
+            .schedule-form {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 1rem;
+        }
+
+        .tab-btn {
+            background: var(--white);
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            padding: 0.6rem 1.1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: var(--accent-color);
+        }
+
+        .tab-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .tab-page {
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Texas, Louisiana, New Mexico, Arizona, Oklahoma, Kansas, Utah, Nevada, California, Oregon, Washington, Colorado, Florida, Georgia, North Carolina, Tennessee, Missouri, Ohio, Virginia & Illinois Youth Soccer Pathways</h1>
+        <p>Connecting families across Houston, Austin, San Antonio, Dallas, the Rio Grande Valley, Louisiana, New Mexico, Arizona, Oklahoma, Kansas, Utah, Nevada, California, Oregon, Washington, Colorado, Florida, Georgia, North Carolina, Tennessee, Missouri, Ohio, Virginia, and Illinois with professional club academies, trial dates, and contact information — organized by division.</p>
+    </header>
+
+    <div class="container">
+
+        <div class="tabs-nav" id="tabsNav">
+            <button class="tab-btn active" onclick="showTab('homegrown')">MLS NEXT Homegrown</button>
+            <button class="tab-btn" onclick="showTab('academy')">MLS NEXT Academy</button>
+            <button class="tab-btn" onclick="showTab('ecnl')">ECNL</button>
+            <button class="tab-btn" onclick="showTab('npl')">NPL</button>
+            <button class="tab-btn" onclick="showTab('usl')">USL</button>
+            <button class="tab-btn" onclick="showTab('european')">European Academies</button>
+            <button class="tab-btn" onclick="showTab('tools')">Schedule & Tools</button>
+
+        </div>
+
+        <div class="tab-page" id="page-homegrown">
+        <h2 class="section-title">MLS NEXT — Homegrown Division (Top Tier)</h2>
+        <p class="note">The top level of MLS NEXT. Rosters are highly competitive and typically require ID sessions or an invitation.</p>
+        <div class="card-grid">
+
+            <div class="academy-card">
+                <h3>Houston Dynamo Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Houston, TX</p>
+                <p>Official MLS NEXT player development pathway tied directly to Houston Dynamo FC.</p>
+                <p><strong>Contact:</strong> <code>preacademy@houstondynamo.com</code></p>
+                <a href="mailto:preacademy@houstondynamo.com" class="btn">Email Academy</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>Austin FC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Austin, TX</p>
+                <p>Official academy of MLS club Austin FC, with a direct pathway to Austin FC II and the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.austinfc.com/academy/" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>FC Dallas Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Frisco, TX (Dallas metro)</p>
+                <p>One of the most established MLS academy pathways in Texas, feeding directly into FC Dallas's first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fcdallas.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>A.C. River</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> San Antonio, TX</p>
+                <p>San Antonio's only MLS NEXT club, operating out of Soccer Central San Antonio's training facility.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.acriverfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>GFI Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Near The Woodlands (Lenze Rd, Spring, TX)</p>
+                <p>Focuses on competitive U13–U19 MLS NEXT, Texas Academy League, and Next Gen divisions.</p>
+                <p><strong>Contact:</strong> <code>carloselizalde@gfiacademy.com</code></p>
+                <a href="mailto:carloselizalde@gfiacademy.com" class="btn">Email Academy</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>Houston Rangers</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Greater Houston Area</p>
+                <p>Competes in MLS NEXT alongside major club academies with periodic ID sessions.</p>
+                <p><strong>Contact:</strong> <code>josh@houstonrangers.com</code></p>
+                <a href="mailto:josh@houstonrangers.com" class="btn">Email Coordinator</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>IDEA Toros Futbol Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> San Antonio / Rio Grande Valley, TX</p>
+                <p>Part of IDEA Public Schools; combines elite MLS NEXT play with academic and college-placement support.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.ideapublicschools.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Phoenix Rising FC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Phoenix, AZ</p>
+                <p>Direct pathway to Phoenix Rising FC, Arizona's professional USL Championship club; a founding MLS NEXT Homegrown Division member.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.prfcyouthsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>RSL Arizona</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Mesa, AZ (Phoenix metro)</p>
+                <p>Direct pathway to Real Salt Lake (MLS) and Utah Royals FC (NWSL); trains out of the Paloma Sports Complex in Mesa.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://rslazsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Tulsa Greenwood SC</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Tulsa, OK</p>
+                <p>The first MLS NEXT club in Oklahoma, providing a full U13–U19 pathway; founded by Cobalt Sports Holdings and former pro Micheal Nsien.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.tulsagreenwoodsc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sporting Kansas City Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Kansas City, KS</p>
+                <p>Official MLS academy of Sporting Kansas City, with a direct Homegrown Player pathway to the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sportingkc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Real Salt Lake Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Herriman, UT (Zions Bank Stadium)</p>
+                <p>Official MLS academy of Real Salt Lake; leads MLS in all-time Homegrown signees, with alumni regularly progressing through Real Monarchs to the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.rsl.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Albion SC Las Vegas</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Las Vegas, NV</p>
+                <p>Partnered with Albion SC San Diego; has developed 40 national team players and secured over $57 million in college scholarships for its athletes.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.albionsclasvegas.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>LA Galaxy Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Carson, CA</p>
+                <p>Official MLS academy of the LA Galaxy, MLS's most decorated club; a top-ranked U14 Homegrown Division program nationally.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.lagalaxy.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>LAFC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Los Angeles, CA</p>
+                <p>Established in 2016; serves U11–U19, with a CONCACAF championship and multiple youth national team call-ups among its alumni.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.lafc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>San Jose Earthquakes Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> San Jose, CA</p>
+                <p>Official MLS academy of the San Jose Earthquakes; alumni include Homegrown Players who've gone on to represent other MLS clubs.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sjearthquakes.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>San Diego FC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> San Diego, CA</p>
+                <p>Academy of MLS's newest club (joined 2025); part of the wider Right to Dream global development network.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sandiegofc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Portland Timbers Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Portland, OR</p>
+                <p>Official MLS academy of the Portland Timbers, built on "Independent, Expertise, and Experience" development pillars, with Regional Training Centers for ages 8–12.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.timbers.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Seattle Sounders FC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Seattle, WA</p>
+                <p>One of MLS's most productive Homegrown pipelines; academy graduates typically progress through Tacoma Defiance (MLS NEXT Pro) before the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.soundersfc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Colorado Rapids Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Commerce City, CO (Dick's Sporting Goods Park)</p>
+                <p>Official MLS academy of the Colorado Rapids; U15/U16/U18 play in Homegrown Division, with a direct pathway to Rapids 2 in MLS NEXT Pro.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.coloradorapids.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>ALBION SC Colorado</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Denver metro, CO</p>
+                <p>Regularly competes against professional MLS academies (Rapids, FC Dallas, Austin FC) in its first year in the Homegrown Division; also runs a USL pathway program.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://albionsccolorado.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Inter Miami CF Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Fort Lauderdale, FL</p>
+                <p>Official MLS academy of Inter Miami CF; fully funds six youth teams from U12–U19 with a direct pathway to the first team via IMCF II in MLS NEXT Pro.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.intermiamicf.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Orlando City SC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Orlando, FL</p>
+                <p>Official MLS academy of Orlando City SC, with a direct Homegrown Player pathway to the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.orlandocitysc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Atlanta United Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Marietta, GA</p>
+                <p>One of MLS's most successful academy pipelines, with numerous Homegrown signings and alumni now playing in Europe's top leagues.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.atlutd.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Charlotte FC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Charlotte, NC</p>
+                <p>Official MLS academy of Charlotte FC, with Discovery and Homestay programs supporting player development on a pathway to Crown Legacy FC and the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.charlottefootballclub.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Carolina Core FC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> High Point, NC</p>
+                <p>Fully-funded academy removing financial barriers to elite play; expanding its Homegrown Division program to six age groups for 2026–27.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.carolinacorefc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Wake FC</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Raleigh / Cary, NC</p>
+                <p>Research Triangle-area club fielding boys' teams in the MLS NEXT Homegrown Division.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.wakefc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Nashville SC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Nashville, TN (Currey Ingram Academy)</p>
+                <p>Official MLS academy of Nashville SC, fielding U14–U18 teams with a residential program for players outside Middle Tennessee; has signed four Homegrown Players since 2023.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.nashvillesc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Chattanooga FC</h3>
+                <span class="focus">Homegrown Division (Southeast)</span>
+                <p><strong>Location:</strong> Chattanooga, TN (Finley Stadium)</p>
+                <p>Tied to Chattanooga FC's MLS NEXT Pro team; fields U13–U15 boys teams in the Homegrown Division's Southeast Conference.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.chattanoogafc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>St. Louis CITY SC Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> St. Louis, MO</p>
+                <p>Official MLS academy of St. Louis CITY SC, one of MLS's newest clubs; feeds directly into St. Louis City 2 in MLS NEXT Pro.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.stlcitysc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>St. Louis Scott Gallagher (SLSG)</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Fenton, MO (World Wide Technology Soccer Park)</p>
+                <p>Large regional club formed in 2007 from a three-club merger; over 4,000 members with a complete pathway from ages 2–20.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.slsg.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Lou Fusz Athletic</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> St. Louis, MO</p>
+                <p>Celebrated 30th anniversary earning a full MLS NEXT player pathway (U13–U19); also fields Girls Academy teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.loufuszathletic.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Columbus Crew Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Columbus, OH</p>
+                <p>Founded 2006; a direct pathway to Columbus Crew 2 in MLS NEXT Pro and ultimately the first team, with a Homestay Program supporting players.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.columbuscrew.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Cincinnati Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Cincinnati, OH</p>
+                <p>Official MLS academy of FC Cincinnati; its U14 team ranked at the top of Ohio's 2026 statewide power rankings.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fccincinnati.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Cincinnati United Premier (CUP)</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Cincinnati, OH</p>
+                <p>Programs from Juniors (3–7) through U19, with a partnership with Working with Parents in Sport supporting holistic player development.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.cincinnatiunited.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Northern Virginia Alliance (NVA)</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Loudoun County, VA (DMV area)</p>
+                <p>Fields boys' teams U13–U19 in MLS NEXT Homegrown and girls' teams in the Girls Academy, with a Men's CCL PRO23 summer program for college players.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.nvasoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Springfield/South County Youth Club (SYC)</h3>
+                <span class="focus">Homegrown & Academy Division</span>
+                <p><strong>Location:</strong> Springfield, VA (DMV area)</p>
+                <p>Currently ranked #1 in Virginia; home of the 2025 MLS NEXT National Champions (2012 Boys) — the only non-MLS NEXT Pro academy to win a national title.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sycva.com/mlsnext" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Chicago Fire Academy</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Chicago, IL</p>
+                <p>Official MLS academy of Chicago Fire FC, fielding U13–U18 teams with a direct pathway through Chicago Fire II in MLS NEXT Pro.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.chicagofirefc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sockers FC Chicago</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Chicagoland, IL</p>
+                <p>Founded 1986; a nationally recognized club whose alumni have gone on to World Cups and professional leagues around the world.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sockersfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Chicago FC United</h3>
+                <span class="focus">Homegrown Division</span>
+                <p><strong>Location:</strong> Glenview, IL (Chicago suburbs)</p>
+                <p>Founded 2003; founding member of both MLS NEXT and the Girls Academy, with strong college placement outcomes.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.chicagofcunited.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+        </div>
+
+        </div>
+
+<div class="tab-page" id="page-academy" style="display:none;">
+        <h2 class="section-title">MLS NEXT — Academy Division (Regional Tier)</h2>
+        <p class="note">A newer, regionally-operated MLS NEXT tier — a strong development track and stepping stone toward the Homegrown Division.</p>
+        <div class="card-grid">
+
+            <div class="academy-card">
+                <h3>Aspire Futbol Club</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Cypress & Spring, TX (Houston metro)</p>
+                <p>MLS NEXT member club (U13–U19 boys) with a Next Gen pathway for younger players; girls DPL program also offered.</p>
+                <p><strong>Contact:</strong> Check tryouts page for current sign-up info</p>
+                <a href="https://aspirefutbol.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>956 United</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Rio Grande Valley, TX (Edinburg/McAllen area)</p>
+                <p>Launched in 2022; competes in MLS Frontier, ECNL/RL, and DPL with a strong focus on college placement.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.956united.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>RGV FC Toros Academy</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Rio Grande Valley, TX</p>
+                <p>Youth academy pathway tied to the RGV FC Toros professional club.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.rgvfctoros.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>Solar Soccer Club</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Frisco / Dallas metro, TX</p>
+                <p>Long-established elite club in North Texas with a deep boys' and girls' competitive pipeline.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.solarsc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Louisiana Elite Soccer Program</h3>
+                <span class="focus">Academy Division (South Conference)</span>
+                <p><strong>Location:</strong> Baton Rouge, LA (draws from Baton Rouge, Lafayette, New Orleans & Shreveport)</p>
+                <p>Formerly LATDP Elite; an affiliate program of Houston Dynamo Academy and part of Baton Rouge Soccer Club, competing in MLS NEXT's South Conference.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://louisianaelite.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Classic FC</h3>
+                <span class="focus">Academy Division (Mountain Division)</span>
+                <p><strong>Location:</strong> Albuquerque, NM</p>
+                <p>Nearly 50-year-old New Mexico club, part of MLS NEXT Academy competing in the Mountain Division, with a strong Far West Regional record.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.classicfcnm.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>New Mexico Soccer Academy (NMSA)</h3>
+                <span class="focus">Academy Division (Mountain Division)</span>
+                <p><strong>Location:</strong> Albuquerque, NM</p>
+                <p>Boys' programs compete in MLS NEXT; girls' programs compete in the Girls Academy league.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.nmsoccer.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>RSL Arizona Mesa</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Mesa, AZ (Phoenix metro)</p>
+                <p>Sister program to RSL Arizona's Homegrown Division club, competing in the MLS NEXT Academy Division tier.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://rslazsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>SC Del Sol</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Phoenix, AZ</p>
+                <p>Long-established Phoenix-area club with a large competitive pipeline, now part of the MLS NEXT Academy Division.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.scdelsol.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Phoenix Premier FC</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Phoenix, AZ</p>
+                <p>Phoenix-area club competing in the MLS NEXT Academy Division tier.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.phoenixpremierfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sporting Oklahoma</h3>
+                <span class="focus">Academy Division (Pioneer Division)</span>
+                <p><strong>Location:</strong> Norman / Moore / Oklahoma City, OK</p>
+                <p>Official Academy Affiliate of Sporting Kansas City, offering a direct MLS pathway plus a College Placement Program for U13–U19 players.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sportingok.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sporting City</h3>
+                <span class="focus">Homegrown & Academy Division</span>
+                <p><strong>Location:</strong> Kansas City, KS (three regions)</p>
+                <p>Official youth club and Academy Affiliate of Sporting Kansas City; fields teams in both the Homegrown and Academy Divisions plus Girls Academy.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sportingcitysoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sporting Wichita</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Wichita, KS</p>
+                <p>MLS Academy affiliate of Sporting Kansas City; won the inaugural U15 Academy Division MLS NEXT Cup championship.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sportingwichita.net" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Utah Celtic FC</h3>
+                <span class="focus">Academy Division (Desert Division)</span>
+                <p><strong>Location:</strong> Salt Lake City, UT</p>
+                <p>Utah's top premier club; four-time U19 MLS NEXT Academy Division national champion (2022–2026) with over 150 college commits since 2019.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.utahceltic.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Downtown Las Vegas Soccer Club (DLVSC)</h3>
+                <span class="focus">Academy Division (Desert Division)</span>
+                <p><strong>Location:</strong> Las Vegas, NV</p>
+                <p>Nonprofit club fully funding 8 of 12 teams; official U.S. partner of AFC Bournemouth, giving players access to Premier League-level training resources.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://downtownlvsc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Bay Area Surf</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> San Jose, CA</p>
+                <p>Comprehensive Bay Area pathway competing in MLS NEXT (boys), ECNL/ECNL-RL (girls), NPL, and a USL W-League semi-pro women's team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://fcbayareasurf.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>San Francisco Seals</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> San Francisco, CA</p>
+                <p>San Francisco's only MLS NEXT club, offering a deliberately low-cost model to increase access regardless of economic background.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sfseals.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sacramento United</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Sacramento, CA</p>
+                <p>Sacramento-area club competing in the MLS NEXT Academy Division tier.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sacramentounited.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Westside Metros FC</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Beaverton, OR (Portland metro)</p>
+                <p>Has sent more players to the Portland Timbers Academy than any other Oregon club; also fields ECNL, ECNL-RL, and Girls Academy teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.westsidemetros.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Soccer Chance Academy</h3>
+                <span class="focus">Academy Division (Pacific Northwest)</span>
+                <p><strong>Location:</strong> Portland, OR</p>
+                <p>Maintains ties with a partner club in North London for international training exposure; over 200 alumni have gone on to collegiate and professional soccer.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.soccerchanceacademy.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sound FC</h3>
+                <span class="focus">Academy Division (Pacific Northwest)</span>
+                <p><strong>Location:</strong> Seattle metro, WA</p>
+                <p>Seattle-area club competing in the MLS NEXT Academy Division's Pacific Northwest tier.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.soundfc.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Colorado United SC</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Denver metro, CO</p>
+                <p>Denver-area club competing in the MLS NEXT Academy Division tier.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.coloradounitedsc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Weston FC</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Weston, FL (Miami/Fort Lauderdale metro)</p>
+                <p>Long-standing South Florida club and founding member of the USL Academy League's Florida Division, alongside its MLS NEXT program.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.westonfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Tampa Bay United</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Tampa, FL (Ed Radice Complex)</p>
+                <p>Tampa's largest youth club; longtime official youth affiliate of the Tampa Bay Rowdies (USL Championship), now competing in MLS NEXT.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://tbusc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>AFC Lightning</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Peachtree City / Fayetteville / Griffin, GA</p>
+                <p>Serves Middle Georgia with comprehensive college prep resources alongside its MLS NEXT competitive program.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.afclightning.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Southern Soccer Academy</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Woodstock, GA (Atlanta metro)</p>
+                <p>Nonprofit serving players ages 3–19 of all ability levels, with a competitive MLS NEXT pathway for its top teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.southernsocceracademy.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Fox Soccer Academy Carolinas</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Mooresville, NC (Charlotte metro)</p>
+                <p>Founded by Premier League champion and Charlotte FC assistant coach Christian Fuchs; runs a European-style Premier League Curriculum with capped team sizes.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.foxsocceracademy.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Nashville United Soccer Academy (NUSA)</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Nashville, TN</p>
+                <p>Key feeder program to Nashville SC Academy, with multiple NUSA players earning promotion to the club's Homegrown Division roster.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://nusasoccer.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>St. Louis Development Academy</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> St. Louis, MO</p>
+                <p>St. Louis-area club competing in the MLS NEXT Academy Division tier.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.stldevelopmentacademy.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Club Ohio Soccer</h3>
+                <span class="focus">Academy Division (promoting to Homegrown for 2026–27)</span>
+                <p><strong>Location:</strong> Dayton, Dublin & Columbus, OH</p>
+                <p>Central Ohio's premier club; one of just five clubs nationally being promoted from Academy Division into the Homegrown Division for the 2026–27 season.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.clubohiosoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Loudoun Soccer Club</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Loudoun County, VA</p>
+                <p>Virginia's largest soccer program with over 16,000 annual registrations; MLS NEXT Academy Division season is built around high school calendars, letting players do both.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.loudounsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>The St. James FC (TSJFC)</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Western Loudoun County to Springfield & Fairfax County, VA</p>
+                <p>Operates across the DC Metro Area; also fields ECNL Regional League Boys and Girls teams alongside its MLS NEXT program.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.thestjames.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>St. Louis Scott Gallagher Illinois</h3>
+                <span class="focus">Academy Division</span>
+                <p><strong>Location:</strong> Metro East, IL (across the river from St. Louis)</p>
+                <p>Illinois chapter of the SLSG family of clubs, giving Metro East families access to the same MLS NEXT pathway as the Missouri side.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.slsgsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+        </div>
+
+        </div>
+
+<div class="tab-page" id="page-ecnl" style="display:none;">
+        <h2 class="section-title">ECNL (Elite Clubs National League)</h2>
+        <p class="note">Texas Conference clubs — a major national pathway parallel to MLS NEXT, strong for both boys and girls with a heavy focus on college recruiting.</p>
+        <div class="card-grid">
+
+            <div class="academy-card">
+                <h3>Dallas Texans</h3>
+                <span class="focus">ECNL Texas Conference</span>
+                <p><strong>Location:</strong> Dallas / Fort Worth, TX</p>
+                <p>Over 30 years established; one of the most decorated ECNL clubs in the state with a strong college placement record.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://dallastexans.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>Albion Hurricanes FC</h3>
+                <span class="focus">ECNL Texas Conference</span>
+                <p><strong>Location:</strong> Houston, TX</p>
+                <p>Competitive Houston-area club fielding boys' and girls' ECNL and ECNL-RL teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.albionhurricanes.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>RISE Soccer Club</h3>
+                <span class="focus">ECNL Texas Conference</span>
+                <p><strong>Location:</strong> Houston, TX</p>
+                <p>Houston club competing in the Boys ECNL Regional League South Division alongside other top-tier state clubs.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.risesc.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>Lonestar Soccer Club</h3>
+                <span class="focus">ECNL Texas Conference</span>
+                <p><strong>Location:</strong> Austin & San Antonio, TX</p>
+                <p>Nationally recognized club operating across Central Texas with North (Austin) and South (San Antonio) divisions.</p>
+                <p><strong>Contact:</strong> <code>tryouts@lonestar-sc.com</code></p>
+                <a href="mailto:tryouts@lonestar-sc.com" class="btn">Email Club</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>San Antonio City SC</h3>
+                <span class="focus">ECNL Texas Conference</span>
+                <p><strong>Location:</strong> San Antonio, TX</p>
+                <p>Competes in the Boys ECNL Texas Conference and ECNL-RL alongside the state's other elite clubs.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sacitysc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>Classics Elite Academy</h3>
+                <span class="focus">ECNL Texas Conference</span>
+                <p><strong>Location:</strong> San Antonio, TX</p>
+                <p>San Antonio-based academy fielding competitive ECNL Texas Conference teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.classicselite.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Louisiana Fire SC</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Kenner, LA (Greater New Orleans)</p>
+                <p>Largest youth soccer organization in Greater New Orleans since 1974, fielding competitive teams from recreational through ECNL/ECNL-RL.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.louisianafiresc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>NM Rapids Soccer Club</h3>
+                <span class="focus">Boys ECNL / ECNL-RL, Girls Academy</span>
+                <p><strong>Location:</strong> Albuquerque, NM</p>
+                <p>New Mexico's premier youth club since 2001; fields teams in Boys ECNL, Girls Academy, and USYSA National League.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.nmrapids.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>PRFC Youth Soccer</h3>
+                <span class="focus">ECNL / ECNL-RL (Founding Member)</span>
+                <p><strong>Location:</strong> Phoenix, AZ (six regions statewide)</p>
+                <p>Arizona's largest soccer club and a founding member of ECNL for both boys and girls; over 3,000 competitive players across 179+ teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.prfcyouthsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Blitz United</h3>
+                <span class="focus">ECNL Regional League (Boys & Girls)</span>
+                <p><strong>Location:</strong> Tulsa, OK</p>
+                <p>Partnered with FC Tulsa; won the 2024 USYS National President's Cup, with Academy FC Juniors and AFC Elite Academy development tracks.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.blitzunitedok.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Union KC Soccer Club</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Overland Park, KS (Kansas City metro)</p>
+                <p>Fields boys and girls from local leagues up to ECNL, ECNL-RL, Girls Academy, and N1; trains at the Garmin Olathe Soccer Complex.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.unionkcsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Wichita Academy</h3>
+                <span class="focus">ECNL National League (Boys) / Regional League (Girls)</span>
+                <p><strong>Location:</strong> Wichita, KS</p>
+                <p>Formed from a merger of FC Wichita and Kansas Rush Wichita; fields seven-plus teams per gender across U11–U19.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.wichitasocceracademy.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Utah Avalanche Soccer Club</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Salt Lake City, UT (Davis, Weber, Salt Lake & Utah counties)</p>
+                <p>Long-standing ECNL member since the league's 2009 founding; hosts the annual Mayors Cup, one of the region's largest tournaments.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://utahavalanche.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Las Vegas Heat Surf</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Las Vegas, NV</p>
+                <p>Merger of Heat FC and Surf Nation; the region's ECNL representative in the Southwest Conference, with a full pathway from grassroots through ECNL.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://lasvegasheatsurf.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>San Diego Surf Soccer Club</h3>
+                <span class="focus">ECNL (Boys Overall Club Champion 2021 & 2023)</span>
+                <p><strong>Location:</strong> San Diego, CA (Surf Sports Park, Del Mar)</p>
+                <p>California's oldest competitive youth club (founded 1977); 21 ECNL national championships and the first-ever ECNL Boys Overall Club Champion.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://surfsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Legends FC</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Inland Empire, Orange County, LA, San Gabriel & San Fernando Valleys, San Diego, CA</p>
+                <p>One of Southern California's most successful clubs, with 40+ state, regional, and national championships across a wide Southland footprint.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.legendsfc.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Marin FC</h3>
+                <span class="focus">ECNL (Boys)</span>
+                <p><strong>Location:</strong> Marin County, CA (North Bay)</p>
+                <p>One of Northern California's top handful of elite clubs, competing regionally and nationally in ECNL boys' play.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://marinfc.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Portland</h3>
+                <span class="focus">ECNL / ECNL-RL (Far West Conference)</span>
+                <p><strong>Location:</strong> Hillsboro, OR</p>
+                <p>Cornerstone Oregon club since 1987; two national championships, and a founding member of the new ECNL Regional League Girls – Far West.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fcportland.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>United PDX</h3>
+                <span class="focus">ECNL Regional League (Girls)</span>
+                <p><strong>Location:</strong> Portland, OR</p>
+                <p>Portland-based club competing in the ECNL Regional League Girls Northwest Conference.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.unitedpdx.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Crossfire Premier</h3>
+                <span class="focus">ECNL / ECNL Regional League (Northwest Conference)</span>
+                <p><strong>Location:</strong> Redmond, WA (Seattle metro)</p>
+                <p>Two-time ECNL Boys Overall Club Champion; one of the Pacific Northwest's top ECNL representatives.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.crossfirepremier.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Eastside FC</h3>
+                <span class="focus">ECNL Regional League (Northwest Conference)</span>
+                <p><strong>Location:</strong> Issaquah / Preston, WA (Seattle metro)</p>
+                <p>Seattle-area club competing in the ECNL Regional League Girls Northwest Conference.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.eastsidefc.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Colorado Rapids Youth Soccer Club</h3>
+                <span class="focus">ECNL (Mountain Conference)</span>
+                <p><strong>Location:</strong> Aurora, CO (Elite Performance Center @ Regis University)</p>
+                <p>Boys and girls ECNL programs, plus USL-W and a College Placement Program; formed through a merger with Colorado Storm.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://rapidsyouthsoccer.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Colorado Rush</h3>
+                <span class="focus">ECNL</span>
+                <p><strong>Location:</strong> Front Range, CO (Denver metro)</p>
+                <p>Front Range club with pathways into ECNL, Girls Academy, and DPL programs.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.coloradorush.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Florida Premier FC</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Tampa Bay area, FL</p>
+                <p>Over 10,000 players and 240+ competitive teams; 500+ college commitments from alumni and a national championship to its name.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://floridapremierfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Prime</h3>
+                <span class="focus">ECNL (Girls)</span>
+                <p><strong>Location:</strong> Davie / Coral Springs / Sunrise / Plantation, FL (Broward County)</p>
+                <p>Formed through a 2019 merger with Sunrise Soccer Club; ECNL Girls member since the 2018–2019 season, with a "Future Stars" program starting at age 4.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fcprimesoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Concorde Fire</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Atlanta, GA</p>
+                <p>Established 1982; a Nike Premier Club with an official partnership with AS Roma's USA Academy Clubs, producing around 30 college scholarship signees per year.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.concordefire.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Atlanta Fire United</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Duluth, GA (Gwinnett County)</p>
+                <p>Over 40 years of history (originally West Gwinnett Soccer Club); nearly 2,900 registered players across recreational and competitive pathways.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.atlantafireunited.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>NCFC Youth</h3>
+                <span class="focus">ECNL (Top 25 Boys & Girls, 2024)</span>
+                <p><strong>Location:</strong> Raleigh, NC (Research Triangle)</p>
+                <p>The largest youth-to-professional soccer club in the country, serving nearly 17,000 players; NCFC Academy ranked 6th nationally in ECNL Boys.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.ncfcyouth.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Charlotte Soccer Academy</h3>
+                <span class="focus">ECNL National / ECNL Regional League</span>
+                <p><strong>Location:</strong> Charlotte, NC</p>
+                <p>ECNL National Programs draw top-level players from across the Charlotte region for boys and girls U13–U19.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://charlottesocceracademy.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Tennessee Soccer Club</h3>
+                <span class="focus">ECNL National (Boys & Girls)</span>
+                <p><strong>Location:</strong> Nashville, TN</p>
+                <p>ECNL National Programs for U13–U19, with a full player pathway that continues into the club's own USL League Two men's and USL W League women's teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://tennesseesoccerclub.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Alliance Knoxville</h3>
+                <span class="focus">ECNL / ECNL-RL (Boys & Girls)</span>
+                <p><strong>Location:</strong> Knoxville, TN</p>
+                <p>East Tennessee's premier youth soccer league, offering both Boys and Girls ECNL and ECNL-RL programs.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://fcallianceknox.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>St. Louis Scott Gallagher (ECNL)</h3>
+                <span class="focus">ECNL (Boys & Girls)</span>
+                <p><strong>Location:</strong> Fenton, MO (World Wide Technology Soccer Park)</p>
+                <p>SLSG's ECNL program runs alongside its MLS NEXT Homegrown teams, giving the club a presence in both of the sport's top national platforms.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.slsg.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Ohio Premier</h3>
+                <span class="focus">ECNL</span>
+                <p><strong>Location:</strong> Dublin, OH (Columbus metro)</p>
+                <p>20–30 college signees per year to schools like Stanford and Tennessee; its 2012 age group ranked Ohio's top U14 team statewide in 2026.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.ohiopremier.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Cleveland Force Soccer Club</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Cleveland, OH (Northeast Ohio)</p>
+                <p>Premier Northeast Ohio pathway from age 3 through pre-professional; also runs USL League Two, USL W League, and USL Academy programs.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.clevelandforcesc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Richmond United</h3>
+                <span class="focus">ECNL (Mid-Atlantic Conference)</span>
+                <p><strong>Location:</strong> Richmond, VA</p>
+                <p>Formed from a merger of Richmond Strikers and Richmond Kickers Youth, serving roughly 10,000 players; a nonprofit committed to affordable, accessible soccer.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://richmondunited.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Fairfax Virginia Union (FVU)</h3>
+                <span class="focus">ECNL National (Mid-Atlantic Division)</span>
+                <p><strong>Location:</strong> Fairfax County, VA</p>
+                <p>Union of six Northern Virginia clubs (BRYC, Herndon, Lee Mount Vernon, Valor, VIVA, and VYS) competing together at the ECNL National League level.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fvaunion.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Eclipse Select Soccer Club</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Chicagoland, IL (Northbrook, Oak Brook, Darien, Naperville)</p>
+                <p>Established 1995; 73 national team players, 600+ college commitments, and 47 professional players to its name across ECNL Boys and Girls.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.eclipseselect.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Chicago Inter Soccer Club</h3>
+                <span class="focus">ECNL / ECNL-RL</span>
+                <p><strong>Location:</strong> Chicago, IL</p>
+                <p>Promoted to ECNL for the 2023–24 season; strong track record of state cup wins, USYS Nationals semifinals, and college placement.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://chicagointersoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+        </div>
+
+        </div>
+
+<div class="tab-page" id="page-npl" style="display:none;">
+        <h2 class="section-title">NPL (National Premier Leagues)</h2>
+        <p class="note">US Club Soccer's high-tier league; the Texas Club Soccer League operates the NPL division for North Texas.</p>
+        <div class="card-grid">
+
+            <div class="academy-card">
+                <h3>Sting Soccer Club</h3>
+                <span class="focus">NPL / Texas Club Soccer League</span>
+                <p><strong>Location:</strong> Plano / Dallas metro, TX</p>
+                <p>National championship pedigree club competing in ECNL, ECNL-RL, and NPL platforms.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://stingsoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>NTX Celtic FC</h3>
+                <span class="focus">NPL / Texas Club Soccer League</span>
+                <p><strong>Location:</strong> Arlington, Grand Prairie, Mansfield & surrounding North Texas cities</p>
+                <p>Regional North Texas club competing in NPL, Girls Academy, and USYS-NL platforms.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.ntxceltic.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Arizona Arsenal SC</h3>
+                <span class="focus">Soccer Alliance of Arizona (NPL)</span>
+                <p><strong>Location:</strong> Phoenix metro, AZ</p>
+                <p>Founding member of the Soccer Alliance of Arizona's NPL division, also fielding a USL Academy team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://azarsenalsc.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Arizona Soccer Club</h3>
+                <span class="focus">Soccer Alliance of Arizona (NPL)</span>
+                <p><strong>Location:</strong> Phoenix metro, AZ</p>
+                <p>Founding member club of the Soccer Alliance of Arizona's NPL division.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.azsoccerclub.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Tucson Youth</h3>
+                <span class="focus">Soccer Alliance of Arizona (NPL)</span>
+                <p><strong>Location:</strong> Tucson, AZ</p>
+                <p>Southern Arizona's largest youth club; a founding NPL member and academy partner of FC Tucson's USL League Two team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fctucson.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Reno Apex Soccer Club</h3>
+                <span class="focus">NPL / ECNL-RL</span>
+                <p><strong>Location:</strong> Reno, NV</p>
+                <p>Northern Nevada's largest and most successful club, with 68+ teams; the region's only ECNL-RL club and a competitive NPL program.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://renoapex.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>San Juan Soccer Club</h3>
+                <span class="focus">NPL (NorCal Premier Soccer)</span>
+                <p><strong>Location:</strong> Rancho Cordova, CA (Sacramento area)</p>
+                <p>Trains at its own club-owned San Juan Soccer Complex; strong focus on long-term development through its "Futures Program."</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sanjuansoccer.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Washington Premier FC</h3>
+                <span class="focus">NPL / ECNL Regional League</span>
+                <p><strong>Location:</strong> Tacoma / Puyallup, WA</p>
+                <p>South Puget Sound club fielding teams from grassroots through ECNL Regional League and NPL.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.washingtonpremierfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>NASA Tophat</h3>
+                <span class="focus">NPL / Georgia Premier</span>
+                <p><strong>Location:</strong> Atlanta, GA</p>
+                <p>One of metro Atlanta's largest and most consistently strong clubs, regularly ranked among Georgia's top competitive programs.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.nasatophat.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Beach FC</h3>
+                <span class="focus">NPL / ECNL</span>
+                <p><strong>Location:</strong> Virginia Beach, VA</p>
+                <p>Established 1982; a top program in southeast Virginia competing in both ECNL and NPL, from Jr Academy through full Travel teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.beachfc.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+        </div>
+
+        </div>
+
+<div class="tab-page" id="page-usl" style="display:none;">
+        <h2 class="section-title">USL Academy & USL Youth</h2>
+        <p class="note">Pathways tied to United Soccer League pro/pre-professional clubs.</p>
+        <div class="card-grid">
+
+            <div class="academy-card">
+                <h3>Houston Football Club</h3>
+                <span class="focus">USL Academy / UPSL Academy</span>
+                <p><strong>Location:</strong> Houston, TX</p>
+                <p>Nonprofit club with USL Academy (U16–U18) and UPSL Academy pathways, plus a summer USL League Two team.</p>
+                <p><strong>Contact:</strong> <code>info@houstonfc-tx.com</code></p>
+                <a href="mailto:info@houstonfc-tx.com" class="btn">Email Club</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>Rodeo Soccer Club</h3>
+                <span class="focus">USL Youth</span>
+                <p><strong>Location:</strong> Celina, TX (Dallas metro)</p>
+                <p>USL Youth program with USL-level coaching and a pathway tied into the wider USL youth-to-pro ecosystem.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.rodeosc.pro" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>New Mexico United Academy</h3>
+                <span class="focus">USL Academy League</span>
+                <p><strong>Location:</strong> Albuquerque, NM</p>
+                <p>Free youth program of USL Championship club New Mexico United (U16–U19), offering a direct pathway to train and play with the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.newmexicoutd.com/academy/" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Tucson</h3>
+                <span class="focus">USL League Two / USL Academy</span>
+                <p><strong>Location:</strong> Tucson, AZ</p>
+                <p>Southern Arizona's premier club, fielding a USL League Two men's team and a boys' youth academy through USL Academy.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fctucson.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Tulsa Academy</h3>
+                <span class="focus">USL Championship Academy</span>
+                <p><strong>Location:</strong> Tulsa, OK</p>
+                <p>Youth academy of USL Championship club FC Tulsa, launched in partnership with Blitz Academy FC.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fctulsa.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Wichita</h3>
+                <span class="focus">USL League Two / USL Academy</span>
+                <p><strong>Location:</strong> Wichita, KS</p>
+                <p>Fields a USL League Two team and offers a fully-funded USL Academy program for standout ECNL players ages U15–U19.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://fcwichita.soccershift.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Salt City SC</h3>
+                <span class="focus">USL League Two</span>
+                <p><strong>Location:</strong> Herriman, UT (Zions Bank Real Academy)</p>
+                <p>Operated directly by the Utah Youth Soccer Association — the first-ever semi-pro team run by a statewide youth soccer organization.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.utahyouthsoccer.net/salt-city-sc" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Las Vegas Lights FC</h3>
+                <span class="focus">USL Championship</span>
+                <p><strong>Location:</strong> Las Vegas, NV</p>
+                <p>Nevada's professional USL Championship club, playing at Cashman Field; check with the club directly for current youth academy and ID event opportunities.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.lvlightsfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sacramento Republic FC Academy</h3>
+                <span class="focus">USL Championship Academy</span>
+                <p><strong>Location:</strong> Sacramento, CA</p>
+                <p>Youth academy of USL Championship club Sacramento Republic FC, which is slated to join MLS as an expansion club in 2027.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sacramentorepublicfc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Orange County SC Academy</h3>
+                <span class="focus">USL Championship Academy</span>
+                <p><strong>Location:</strong> Irvine, CA</p>
+                <p>Youth academy of USL Championship club Orange County SC, offering a direct pathway to the professional first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.orangecountysoccerclub.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Sporting Cascades FC</h3>
+                <span class="focus">USL League One</span>
+                <p><strong>Location:</strong> Eugene, OR (Civic Park)</p>
+                <p>New professional club debuting in USL League One in 2026, succeeding longtime USL League Two club Lane United FC and its 12-year development legacy.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.sportingcascadesfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Spokane Velocity FC</h3>
+                <span class="focus">USL League One</span>
+                <p><strong>Location:</strong> Spokane, WA (One Spokane Stadium)</p>
+                <p>Eastern Washington's professional USL League One club; check with the club directly for current youth academy and ID event opportunities.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.spokanevelocityfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Colorado Springs Switchbacks FC</h3>
+                <span class="focus">USL Championship Academy</span>
+                <p><strong>Location:</strong> Colorado Springs, CO (Weidner Field)</p>
+                <p>Switchbacks FC II (U13–U19) is the development pathway, partnered with Pride SC, leading to USL Academy contracts with the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.switchbacksfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Tampa Bay Rowdies</h3>
+                <span class="focus">USL Championship Academy ("Rowdies 2")</span>
+                <p><strong>Location:</strong> St. Petersburg, FL (Al Lang Stadium)</p>
+                <p>Runs a dedicated academy squad giving top local talent USL Academy contracts; alumni include a Dominican Republic senior national teamer.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.rowdiessoccer.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>IMG Academy</h3>
+                <span class="focus">USL Academy League (Florida Division)</span>
+                <p><strong>Location:</strong> Bradenton, FL</p>
+                <p>World-renowned multi-sport boarding school with a 15-field soccer complex; a founding member of the USL Academy League's Florida Division.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.imgacademy.com/sports/soccer" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Tormenta FC Academy</h3>
+                <span class="focus">USL League One Academy</span>
+                <p><strong>Location:</strong> Statesboro, GA (Tormenta Stadium)</p>
+                <p>Youth academy of South Georgia Tormenta FC, a USL League One professional club, offering a direct pathway to the first team.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.tormentafc.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Charlotte Independence</h3>
+                <span class="focus">USL League One Academy</span>
+                <p><strong>Location:</strong> Charlotte, NC (American Legion Memorial Stadium)</p>
+                <p>Youth academy of USL League One club Charlotte Independence, a founding MLS NEXT Homegrown Division member in North Carolina.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.charlotteindependence.com/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>One Knoxville SC</h3>
+                <span class="focus">USL League One / USL Academy</span>
+                <p><strong>Location:</strong> Knoxville, TN</p>
+                <p>One Knox Youth Club is the free-access youth arm of USL League One's One Knoxville SC, competing in ECNL, ECNL-RL, and USL Academy.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.oneknoxvillesc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Cleveland Force (USL Academy)</h3>
+                <span class="focus">USL League Two / USL W League / USL Academy</span>
+                <p><strong>Location:</strong> Cleveland, OH</p>
+                <p>Cleveland Force fields a full USL pathway alongside its ECNL programs — USL League Two, USL W League, and USL Academy.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.clevelandforcesc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Loudoun United FC</h3>
+                <span class="focus">USL Championship (Academy Contracts)</span>
+                <p><strong>Location:</strong> Leesburg, VA (Segra Field)</p>
+                <p>D.C. United's USL Championship affiliate; regularly signs standout local youth players (drawn from clubs like NVA and VRSC) to first-team Academy Contracts.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.loudoununitedfc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Chicago City Soccer Club</h3>
+                <span class="focus">USL League Two</span>
+                <p><strong>Location:</strong> Chicago, IL</p>
+                <p>Fields a USL League Two men's team; committed to removing financial barriers so its youth pathway remains accessible to all players.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.chicagocitysc.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+        </div>
+
+        </div>
+
+<div class="tab-page" id="page-european" style="display:none;">
+        <h2 class="section-title">European Partner Academies in Texas</h2>
+        <p class="note">Officially licensed satellite academies of European clubs, teaching their first-team methodology to local youth players.</p>
+        <div class="card-grid">
+
+            <div class="academy-card">
+                <h3>Juventus Academy Houston</h3>
+                <span class="focus">Juventus (Italy) Partner Academy</span>
+                <p><strong>Location:</strong> Katy, TX (3700 S Mason Rd)</p>
+                <p>Official Juventus-branded academy bringing Italian training methodology and UEFA-licensed coaches to Houston-area players ages 6–16.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://juventusacademyhouston.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>PSG Academy Houston</h3>
+                <span class="focus">Paris Saint-Germain (France) Partner Academy</span>
+                <p><strong>Location:</strong> Houston, TX</p>
+                <p>Official PSG academy following the club's methodology, with a staged pathway from Future Stars through competitive teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://psgacademyusacamp.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>PSG Academy Dallas–Fort Worth</h3>
+                <span class="focus">Paris Saint-Germain (France) Partner Academy</span>
+                <p><strong>Location:</strong> Mansfield / Alvarado, TX</p>
+                <p>Official PSG academy for the DFW area, run by PSG-certified and UEFA-licensed coaches.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.psgacademydfw.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>PSG Academy Austin</h3>
+                <span class="focus">Paris Saint-Germain (France) Partner Academy</span>
+                <p><strong>Location:</strong> Austin, TX</p>
+                <p>PSG's official Austin-area academy offering the same "Paris Way" methodology used at the DFW and Houston locations.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://psgacademyusacamp.com/soccer-camp-in-austin/" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>BVB International Academy — North Texas</h3>
+                <span class="focus">Borussia Dortmund (Germany) Partner Academy</span>
+                <p><strong>Location:</strong> Dallas metro, TX</p>
+                <p>Official youth development partner of German Bundesliga club Borussia Dortmund; also fields ECNL/NPL competitive teams.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.bvbia.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+            </div>
+
+            <div class="academy-card">
+                <h3>Villarreal Houston Academy</h3>
+                <span class="focus">Villarreal CF (Spain) Partner Academy</span>
+                <p><strong>Location:</strong> Humble, Kingwood & Atascocita, TX (NE Houston)</p>
+                <p>Official Villarreal CF partner academy; newly accepted into the Texas Academy League as a step toward MLS NEXT competition.</p>
+                <p><strong>Contact:</strong> <code>info@villarrealhouston.com</code></p>
+                <a href="mailto:info@villarrealhouston.com" class="btn">Email Academy</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Barça Academy</h3>
+                <span class="focus">FC Barcelona (Spain) Official Residency Academy</span>
+                <p><strong>Location:</strong> Casa Grande, AZ</p>
+                <p>Official FC Barcelona youth residency academy since 2010; alumni include Julian Araujo (FC Barcelona) and Caden Clark (RB Leipzig). Scholarships available.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://barcaacademy.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Juventus Academy Phoenix</h3>
+                <span class="focus">Juventus (Italy) Partner Academy</span>
+                <p><strong>Location:</strong> Mesa, AZ (Arizona Athletic Grounds)</p>
+                <p>European-inspired academy for boys and girls U6–U19 with UEFA-licensed coaching; free tryouts, no registration fees.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://juveacademyphx.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>PSG Academy Phoenix</h3>
+                <span class="focus">Paris Saint-Germain (France) Partner Academy</span>
+                <p><strong>Location:</strong> Phoenix, AZ</p>
+                <p>Official PSG academy and Soccer Alliance of Arizona (NPL) member, following PSG's "Paris Way" training methodology.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://psgacademyusacamp.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>FC Bayern Munich Academy</h3>
+                <span class="focus">FC Bayern Munich (Germany) Residential Academy</span>
+                <p><strong>Location:</strong> San Diego, CA</p>
+                <p>FC Bayern's official U.S. residential academy, opened 2026; trains players to Bayern's exact standards with a structured "FC Bayern Pathway" and ties to partner club LAFC.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://fcbayern.com/en/academy" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>PSG Academy Los Angeles</h3>
+                <span class="focus">Paris Saint-Germain (France) Partner Academy</span>
+                <p><strong>Location:</strong> Los Angeles, CA</p>
+                <p>Official PSG academy training boys and girls from age 6 in the same "Paris Way" methodology used across PSG's global academy network.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.psgacademyla.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>PSG Academy Miami</h3>
+                <span class="focus">Paris Saint-Germain (France) Partner Academy</span>
+                <p><strong>Location:</strong> Miami, FL (Tropical Park Stadium)</p>
+                <p>Official PSG-licensed academy for boys and girls U6–U19, affiliated with USL Championship club FC Miami City; all coaches are PSG-certified and/or UEFA-licensed.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.psgacademymiami.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>PSG Academy Fort Lauderdale</h3>
+                <span class="focus">Paris Saint-Germain (France) Partner Academy</span>
+                <p><strong>Location:</strong> Fort Lauderdale, FL</p>
+                <p>Five-field professional-grade training complex; offers a residential program alongside day training, following PSG's global academy methodology.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.psgacademyusacamp.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>St. Louis Lions Elite Academy</h3>
+                <span class="focus">Celtic FC (Scotland) Partner Program</span>
+                <p><strong>Location:</strong> Cottleville, MO (St. Louis metro)</p>
+                <p>Partnered with Celtic FC since 2011, sending Celtic Youth Academy coaches to train St. Louis Lions players and coaches, with reciprocal trips to Glasgow.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://stllions.com" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+            <div class="academy-card">
+                <h3>Villarreal Virginia Academy (VIVA)</h3>
+                <span class="focus">Villarreal CF (Spain) Partner Academy</span>
+                <p><strong>Location:</strong> Fairfax County, VA</p>
+                <p>Official Villarreal CF-branded academy, now part of the Fairfax Virginia Union union of clubs, bringing La Liga club methodology to Northern Virginia players.</p>
+                <p><strong>Contact:</strong> Check official portal</p>
+                <a href="https://www.fvaunion.org" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>
+
+        </div>
+
+        </div>
+
+        </div>
+
+<div class="tab-page" id="page-tools" style="display:none;">
+        <h2 class="section-title">Tryout Schedule</h2>
+        <p class="note">Tryout dates change every season and most clubs don't post them far in advance — always double-check with the club directly before making plans. Add and edit dates here as you confirm them; entries are saved in your browser only.</p>
+        <div class="schedule-form">
+            <input type="text" id="schAcademy" placeholder="Academy / Team">
+            <input type="text" id="schDivision" placeholder="Division">
+            <input type="text" id="schAgeGroup" placeholder="Age group (e.g. U12)">
+            <input type="text" id="schDate" placeholder="Date(s)">
+            <input type="text" id="schLocation" placeholder="Location">
+            <button onclick="addSchedule()">Add</button>
+        </div>
+        <div class="schedule-wrap">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Academy / Team</th>
+                        <th>Division</th>
+                        <th>Age Group</th>
+                        <th>Tryout Date(s)</th>
+                        <th>Location</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleBody">
+                    <tr id="scheduleEmptyRow"><td colspan="6" class="empty-note">No tryout dates added yet — use the form above to add one.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">For Parents & Families</h2>
+        <div class="academy-card">
+            <h3>Tryout & Evaluation Tips</h3>
+            <p>* Check official club pages seasonally for open ID session windows.</p>
+            <p>* Bring essential gear: proper cleats, shin guards, and plenty of water.</p>
+            <p>* Reach out directly via the provided emails for age-specific team availability.</p>
+        </div>
+
+        <h2 class="section-title">Add Your Own Academy</h2>
+        <p class="note">Found a club that's not listed, or a verified contact? Add it here — saved in your browser only, so it's private to you.</p>
+        <div class="contact-form" style="grid-template-columns: 1fr 1fr 1fr 1fr auto;">
+            <input type="text" id="acadName" placeholder="Academy name">
+            <input type="text" id="acadDivision" placeholder="Division (e.g. Homegrown)">
+            <input type="text" id="acadLocation" placeholder="City / Location">
+            <input type="text" id="acadContact" placeholder="Email or website">
+            <button onclick="addAcademy()">Add</button>
+        </div>
+        <div class="card-grid" id="customAcademyList"></div>
+        <p class="empty-note" id="customAcademyEmpty">No custom academies added yet.</p>
+
+        <h2 class="section-title">Coach Contacts</h2>
+        <p class="note">Add coach or club contact details as you collect them. This list is saved only in your browser (it clears if you clear your browser data), so it's private to you.</p>
+        <div class="contact-form">
+            <input type="text" id="contactAcademy" placeholder="Academy / Team">
+            <input type="text" id="contactName" placeholder="Coach name">
+            <input type="email" id="contactEmail" placeholder="Coach email">
+            <button onclick="addContact()">Add</button>
+        </div>
+        <ul class="contact-list" id="contactList">
+            <li class="empty-note" id="emptyNote">No contacts added yet.</li>
+        </ul>
+
+        <h2 class="section-title">Email Template</h2>
+        <div class="template-box">
+            <div class="template-fields">
+                <div>
+                    <label for="tplParent">Your name</label>
+                    <input type="text" id="tplParent" placeholder="e.g. Maria Alvarez" oninput="updateTemplate()">
+                </div>
+                <div>
+                    <label for="tplChild">Child's name</label>
+                    <input type="text" id="tplChild" placeholder="e.g. Diego" oninput="updateTemplate()">
+                </div>
+                <div>
+                    <label for="tplAge">Child's age</label>
+                    <input type="text" id="tplAge" placeholder="12" oninput="updateTemplate()">
+                </div>
+                <div>
+                    <label for="tplPosition">Position</label>
+                    <input type="text" id="tplPosition" placeholder="e.g. midfielder" oninput="updateTemplate()">
+                </div>
+                <div>
+                    <label for="tplAcademy">Academy name</label>
+                    <input type="text" id="tplAcademy" placeholder="e.g. Houston Dynamo Academy" oninput="updateTemplate()">
+                </div>
+                <div>
+                    <label for="tplPhone">Your phone (optional)</label>
+                    <input type="text" id="tplPhone" placeholder="(xxx) xxx-xxxx" oninput="updateTemplate()">
+                </div>
+            </div>
+            <textarea id="tplOutput" readonly></textarea>
+            <br>
+            <button class="btn copy-btn" onclick="copyTemplate()">Copy Template</button>
+        </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Houston Youth Soccer Directory. Built to help local families find pathways.</p>
+    </footer>
+
+    <script>
+        // ---- Tab navigation ----
+        function showTab(pageId) {
+            document.querySelectorAll('.tab-page').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.getElementById('page-' + pageId).style.display = 'block';
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            window.scrollTo({ top: document.getElementById('tabsNav').offsetTop - 20, behavior: 'smooth' });
+        }
+
+        // ---- Tryout schedule (saved in this browser only) ----
+        const SCHEDULE_STORAGE_KEY = 'youthSoccerTryoutSchedule';
+
+        function loadSchedule() {
+            try {
+                return JSON.parse(localStorage.getItem(SCHEDULE_STORAGE_KEY)) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveSchedule(rows) {
+            localStorage.setItem(SCHEDULE_STORAGE_KEY, JSON.stringify(rows));
+        }
+
+        function renderSchedule() {
+            const body = document.getElementById('scheduleBody');
+            const rows = loadSchedule();
+            body.innerHTML = '';
+
+            if (rows.length === 0) {
+                body.innerHTML = '<tr id="scheduleEmptyRow"><td colspan="6" class="empty-note">No tryout dates added yet — use the form above to add one.</td></tr>';
+                return;
+            }
+
+            rows.forEach((r, i) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${escapeHtml(r.academy)}</strong></td>
+                    <td>${escapeHtml(r.division)}</td>
+                    <td>${escapeHtml(r.ageGroup)}</td>
+                    <td>${escapeHtml(r.date)}</td>
+                    <td>${escapeHtml(r.location)}</td>
+                    <td><button class="remove-btn" onclick="removeSchedule(${i})">Remove</button></td>
+                `;
+                body.appendChild(tr);
+            });
+        }
+
+        function addSchedule() {
+            const academy = document.getElementById('schAcademy').value.trim();
+            const division = document.getElementById('schDivision').value.trim();
+            const ageGroup = document.getElementById('schAgeGroup').value.trim();
+            const date = document.getElementById('schDate').value.trim();
+            const location = document.getElementById('schLocation').value.trim();
+
+            if (!academy || !date) {
+                alert('Please enter at least an academy name and a date.');
+                return;
+            }
+
+            const rows = loadSchedule();
+            rows.push({ academy, division, ageGroup, date, location });
+            saveSchedule(rows);
+
+            document.getElementById('schAcademy').value = '';
+            document.getElementById('schDivision').value = '';
+            document.getElementById('schAgeGroup').value = '';
+            document.getElementById('schDate').value = '';
+            document.getElementById('schLocation').value = '';
+
+            renderSchedule();
+        }
+
+        function removeSchedule(index) {
+            const rows = loadSchedule();
+            rows.splice(index, 1);
+            saveSchedule(rows);
+            renderSchedule();
+        }
+
+        // ---- Custom academies (saved in this browser only) ----
+        const ACAD_STORAGE_KEY = 'youthSoccerCustomAcademies';
+
+        function loadAcademies() {
+            try {
+                return JSON.parse(localStorage.getItem(ACAD_STORAGE_KEY)) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveAcademies(academies) {
+            localStorage.setItem(ACAD_STORAGE_KEY, JSON.stringify(academies));
+        }
+
+        function renderAcademies() {
+            const grid = document.getElementById('customAcademyList');
+            const emptyNote = document.getElementById('customAcademyEmpty');
+            const academies = loadAcademies();
+            grid.innerHTML = '';
+
+            if (academies.length === 0) {
+                emptyNote.style.display = 'block';
+                return;
+            }
+            emptyNote.style.display = 'none';
+
+            academies.forEach((a, i) => {
+                const isEmail = a.contact.includes('@');
+                const contactHtml = isEmail
+                    ? `<p><strong>Contact:</strong> <code>${escapeHtml(a.contact)}</code></p><a href="mailto:${encodeURIComponent(a.contact)}" class="btn">Email Academy</a>`
+                    : `<p><strong>Contact:</strong> Website</p><a href="${a.contact.startsWith('http') ? a.contact : 'https://' + a.contact}" target="_blank" rel="noopener noreferrer" class="btn">Visit Website</a>`;
+
+                const card = document.createElement('div');
+                card.className = 'academy-card';
+                card.innerHTML = `
+                    <h3>${escapeHtml(a.name)}</h3>
+                    <span class="focus">${escapeHtml(a.division || 'Custom Entry')}</span>
+                    <p><strong>Location:</strong> ${escapeHtml(a.location)}</p>
+                    ${contactHtml}
+                    <button class="remove-btn" style="margin-top:0.6rem;" onclick="removeAcademy(${i})">Remove</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function addAcademy() {
+            const name = document.getElementById('acadName').value.trim();
+            const division = document.getElementById('acadDivision').value.trim();
+            const location = document.getElementById('acadLocation').value.trim();
+            const contact = document.getElementById('acadContact').value.trim();
+
+            if (!name || !contact) {
+                alert('Please enter at least an academy name and a contact (email or website).');
+                return;
+            }
+
+            const academies = loadAcademies();
+            academies.push({ name, division, location, contact });
+            saveAcademies(academies);
+
+            document.getElementById('acadName').value = '';
+            document.getElementById('acadDivision').value = '';
+            document.getElementById('acadLocation').value = '';
+            document.getElementById('acadContact').value = '';
+
+            renderAcademies();
+        }
+
+        function removeAcademy(index) {
+            const academies = loadAcademies();
+            academies.splice(index, 1);
+            saveAcademies(academies);
+            renderAcademies();
+        }
+
+        // ---- Coach contacts (saved in this browser only) ----
+        const STORAGE_KEY = 'youthSoccerCoachContacts';
+
+        function loadContacts() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveContacts(contacts) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
+        }
+
+        function renderContacts() {
+            const list = document.getElementById('contactList');
+            const contacts = loadContacts();
+            list.innerHTML = '';
+
+            if (contacts.length === 0) {
+                list.innerHTML = '<li class="empty-note">No contacts added yet.</li>';
+                return;
+            }
+
+            contacts.forEach((c, i) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <div class="info">
+                        <strong>${escapeHtml(c.name || 'Unnamed contact')}</strong> — ${escapeHtml(c.academy || '')}
+                        <span>${escapeHtml(c.email)}</span>
+                    </div>
+                    <div class="actions">
+                        <a href="mailto:${encodeURIComponent(c.email)}" class="btn" style="padding:0.3rem 0.7rem;">Email</a>
+                        <button class="remove-btn" onclick="removeContact(${i})">Remove</button>
+                    </div>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        function addContact() {
+            const academy = document.getElementById('contactAcademy').value.trim();
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+
+            if (!email) {
+                alert('Please enter an email address.');
+                return;
+            }
+
+            const contacts = loadContacts();
+            contacts.push({ academy, name, email });
+            saveContacts(contacts);
+
+            document.getElementById('contactAcademy').value = '';
+            document.getElementById('contactName').value = '';
+            document.getElementById('contactEmail').value = '';
+
+            renderContacts();
+        }
+
+        function removeContact(index) {
+            const contacts = loadContacts();
+            contacts.splice(index, 1);
+            saveContacts(contacts);
+            renderContacts();
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str || '';
+            return div.innerHTML;
+        }
+
+        // ---- Email template generator ----
+        function updateTemplate() {
+            const parent = document.getElementById('tplParent').value.trim() || '[Your Name]';
+            const child = document.getElementById('tplChild').value.trim() || '[Child\'s Name]';
+            const age = document.getElementById('tplAge').value.trim() || '[Age]';
+            const position = document.getElementById('tplPosition').value.trim() || '[Position]';
+            const academy = document.getElementById('tplAcademy').value.trim() || '[Academy Name]';
+            const phone = document.getElementById('tplPhone').value.trim();
+
+            const template =
+`Subject: Inquiry Regarding Tryout Opportunities for a ${age}-Year-Old Prospective Player
+
+Dear ${academy} Coaching and Recruitment Staff,
+
+My name is ${parent}, and I am writing on behalf of my ${age}-year-old, ${child}, to formally inquire about tryout, evaluation, and potential roster opportunities within your club's youth development program.
+
+${child} plays primarily as a ${position} and has been actively training and competing in club soccer. We have followed ${academy}'s reputation for developing young players and believe it would be an excellent environment to continue that growth, both athletically and personally.
+
+We would greatly appreciate any information you're able to share regarding the following:
+
+1. Upcoming identification (ID) sessions, open tryouts, or evaluation dates for the appropriate age group
+2. Eligibility requirements, required documentation, or prerequisites for registration
+3. Registration deadlines, associated fees, and any financial assistance options that may be available
+4. Typical training schedule, season structure, and travel commitments for this age group
+5. Whether an in-person evaluation can be arranged if no upcoming ID sessions are currently scheduled
+
+${child} is committed to putting in the work required to compete at a high level, and we are prepared to support that commitment fully as a family. We would welcome the opportunity to provide any additional information — playing history, current club affiliation, highlight footage, or references — that would be helpful in evaluating ${child} for your program.
+
+Please let us know what next steps you would recommend, and feel free to reach out by phone or email at your convenience. We understand your time is valuable and truly appreciate your consideration.
+
+Thank you very much for your time, and we look forward to hearing from you soon.
+
+Warm regards,
+
+${parent}
+Parent/Guardian of ${child}
+${phone ? phone : '[Phone Number]'}
+[Email Address]`;
+
+            document.getElementById('tplOutput').value = template;
+        }
+
+        function copyTemplate() {
+            const textarea = document.getElementById('tplOutput');
+            textarea.select();
+            document.execCommand('copy');
+            alert('Template copied to clipboard!');
+        }
+
+        // Initialize on load
+        renderSchedule();
+        renderAcademies();
+        renderContacts();
+        updateTemplate();
+    </script>
+
+</body>
+</html>
